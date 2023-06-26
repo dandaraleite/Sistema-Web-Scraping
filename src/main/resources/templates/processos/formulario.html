@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Processos</title>
+</head>
+<body>
+
+<h1>Processos</h1>
+
+<form id="meuFormulario">
+    <input type="text" id="pid" name="pid" />
+    <button type="button" onclick="buscar()">Buscar</button>
+    <input type="hidden" id="numeroProcesso" />
+</form>
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+        crossorigin="anonymous"></script>
+
+    <script>
+    function buscar() {
+        var pid = document.getElementById('pid').value;
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'processos/formulario', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            document.getElementById('numeroProcesso').innerText = xhr.responseText;
+            var resposta = document.getElementById('numeroProcesso').innerText;
+            console.log(resposta);
+          }
+        };
+        xhr.send(pid);
+    }
+    </script>
+
+</form>
+</body>
+</html>

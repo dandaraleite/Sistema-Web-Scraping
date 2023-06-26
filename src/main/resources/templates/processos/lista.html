@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Processos</title>
+</head>
+<body>
+
+    <h1>Lista de Processos</h1>
+    <table>
+    <thread>
+        <th>Nº de publicação:</th>
+        <th>Nº do pedido internacional</th>
+        <th>Data de publicação</th>
+        <th>Requerentes</th>
+        <th>Titulo</th>
+    </thread>
+    <tbody>
+    <tr th:each="processo : ${lista}">
+        <td th:text="${processo.numeroPub}"></td>
+        <td th:text="${processo.numeroPedidoInternacional}"></td>
+        <td th:text="${processo.dataPublicacao}"></td>
+        <td th:text="${processo.requerentes}"></td>
+        <td th:text="${processo.titulo}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="/processos/formulario">Voltar para Formulario</a>
+</body>
+</html>
